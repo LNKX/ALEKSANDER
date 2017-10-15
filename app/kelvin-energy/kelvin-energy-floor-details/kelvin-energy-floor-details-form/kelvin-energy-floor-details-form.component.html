@@ -1,0 +1,37 @@
+<form NgForm *ngFor = "let storey of storeyNumber; let i = index;">
+	<p>Storey {{i+1}}</p>
+	<md-select mdTooltip = "Select the type of floor on this storey" mdTooltipShowDelay = "500" placeholder="Floor type" [(ngModel)]="floorTypesInput[i]" class = "floorTypeSelector" name = "floorType{{i}}">
+		    <md-option *ngFor="let floorType of floorTypes;" [value]="floorType.value">
+		      	{{floorType.viewValue}}
+		    </md-option>
+	 </md-select>
+
+	 <md-form-field style="width: 150px">
+	 <input mdInput type="number" placeholder="Floor area (m2)" name="floorArea" maxlength="5" min="0"  [(ngModel)] = "floorAreasInput[i]">
+	 </md-form-field>
+
+	 <!--  <button md-raised-button mdTooltip = "Does this storey have multiple floor types? Use this!" mdTooltipShowDelay = "500" color="primary">
+		     Add floor type
+	</button> -->
+
+	<button md-mini-fab mdTooltip = "Delete this floor" mdTooltipShowDelay = "500" color="warn" (click) = "deleteFloor(i)">
+		<md-icon>delete</md-icon>
+	</button> 
+	</form>
+
+		
+	<button md-raised-button color="primary" style="inline" (click)="incrementStoreyNumber()">
+	    <md-icon>library_add</md-icon>
+	     Add storey
+	</button> 
+
+	<div class="done-button">
+		<button md-raised-button color="primary">
+	    	<md-icon>save</md-icon>
+	     Save
+		</button> 
+	</div>
+
+	<!-- TODO
+	Add form validation
+	 -->

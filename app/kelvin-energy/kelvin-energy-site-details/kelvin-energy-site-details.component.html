@@ -7,34 +7,6 @@
     </md-panel-title>
   </md-expansion-panel-header>
 
-<form class="example-form">
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><md-form-field class="example-full-width">
-      <input mdInput placeholder="Client name">
-    </md-form-field></td>
-  </tr></table>
-
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td>
-      <md-form-field class="example-full-width">
-      <input mdInput placeholder="Street Address">
-    </md-form-field>
-    <md-form-field class="example-full-width">
-      <input mdInput placeholder="Suburb">
-    </md-form-field></td>
-    <td><md-form-field class="example-full-width">
-      <input mdInput placeholder="State">
-    </md-form-field></td>
-    <td><md-form-field class="example-full-width">
-      <input mdInput #postalCode maxlength="4" placeholder="Post code">
-      <md-hint align="end">{{postalCode.value.length}} / 4</md-hint>
-    </md-form-field></td>
-  </tr></table>
-</form>
-<button md-raised-button color="primary">
-    <md-icon>save</md-icon>
-     Save
-</button> 
-
+    <app-kelvin-energy-site-details-form></app-kelvin-energy-site-details-form>
 </md-expansion-panel>
-<!--Site Details HTML-->
+

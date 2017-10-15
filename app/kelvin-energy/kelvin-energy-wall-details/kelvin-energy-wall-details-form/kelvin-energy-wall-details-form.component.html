@@ -1,0 +1,5 @@
+<md-select mdTooltip = "Select the wall types on this storey" mdTooltipShowDelay = "500" placeholder="Wall type" [(ngModel)]="wallTypesInput[i]" class = "floorTypeSelector" name = "floorType{{i}}">
+		    <md-option *ngFor="let wallType of floorTypes;" [value]="wallType.value">
+		      	{{wallType.viewValue}}
+		    </md-option>
+	 </md-select>
