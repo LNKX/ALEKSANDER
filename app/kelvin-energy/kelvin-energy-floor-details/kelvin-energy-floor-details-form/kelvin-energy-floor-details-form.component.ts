@@ -10,44 +10,51 @@ export class KelvinEnergyFloorDetailsFormComponent implements OnInit {
 	readonly MAX_STOREYS = 4;
 	selectedFloorType = [];
 	floorTypes = [
-	{value: 'concreteSlab', viewValue: 'Concrete slab'},
-	{value: 'suspendedTimber', viewValue: 'Suspended timber'},
-	{value: 'suspendedSlab', viewValue: 'Suspended slab'},
-	{value: 'wafflePod', viewValue: 'Waffle pod'}
+		{value: 'concreteSlab', viewValue: 'Concrete slab'},
+		{value: 'suspendedTimber', viewValue: 'Suspended timber'},
+		{value: 'suspendedSlab', viewValue: 'Suspended slab'},
+		{value: 'wafflePod', viewValue: 'Waffle pod'}
 	]; 
 
-	//debugme = [undefined];
-	//storeyData = 	[{floorTypes: [], floorAreas:[]}];
-	//storeyDataTemplate = 	{floorTypes: [], floorAreas:[]};
+	insulationTypes = [
+		{value: 'aircell', viewValue: 'Aircell'},
+		{value: 'foilboard', viewValue: 'Foilboard'},
+		{value: 'sisalationFoil', viewValue: 'Sisalation Foil'},
+		{value: 'batts', viewValue: 'Batts'}
+	];
+
+
 	storeyNumber = [undefined];
 	floorTypesInput = []
 	floorAreasInput = [];
+	insulationTypesInput = [];
+	battValueInput = [];
+	testing = [true];
+
+	storeyData = [{floorTypes: [],floorAreas:[], insulationTypes:[], battValue: []}];
+
+
+	trackByFn(index){
+	 return index;
+	}
 
 	deleteFloor(index){
-		this.storeyNumber.splice(index,1);
-		this.floorTypesInput.splice(index,1);
-		this.floorAreasInput.splice(index,1);
 
+		this.storeyData.splice(index,1);
 
 	}
 	incrementStoreyNumber(){
 		
-		//this.storeyData.push(this.storeyDataTemplate);
-		//this.debugme.push([]);
-		this.storeyNumber.push([]);
-		this.floorTypesInput.push([]);
-		this.floorAreasInput.push([]);
-		// try using iterable objects?s
-		console.log(this.floorTypesInput);
-		//console.log(this.floorAreasInput);
-		//console.log(this.debugme);
-		//for (let i=0, x = this.storeyData.length; i<x; i++){
-		//console.log(this.storeyData[i].floorTypes[0])
-		//}
+		this.storeyData.push({floorTypes: [],floorAreas:[], insulationTypes:[], battValue: []});
+
 	}
 
-	trackByFn(index, item)
-	{return item.name} 
+	debugFunction(){
+
+		this.testing[1]= true;
+		console.log(this.storeyData)
+
+	}
 
 
   constructor() { }
@@ -61,6 +68,5 @@ export class KelvinEnergyFloorDetailsFormComponent implements OnInit {
 
 
 }
-// [storey1 [
-//            [storey1floortype1, storey1floortype2],
-// [storey1floor1ty]], storey 2 []]
+// why aren't we using an object to keep all of our data?
+// https://stackoverflow.com/questions/46658597/angular-ngfor-with-ngmodel-using-select-has-unexpected-binding

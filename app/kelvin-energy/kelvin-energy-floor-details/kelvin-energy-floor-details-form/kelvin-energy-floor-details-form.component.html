@@ -1,22 +1,34 @@
-<form NgForm *ngFor = "let storey of storeyNumber; let i = index;">
-	<p>Storey {{i+1}}</p>
-	<md-select mdTooltip = "Select the type of floor on this storey" mdTooltipShowDelay = "500" placeholder="Floor type" [(ngModel)]="floorTypesInput[i]" class = "floorTypeSelector" name = "floorType{{i}}">
-		    <md-option *ngFor="let floorType of floorTypes;" [value]="floorType.value">
-		      	{{floorType.viewValue}}
-		    </md-option>
-	 </md-select>
+<form *ngFor = "let storey of storeyData; let i = index;">
+    <md-select placeholder="Floor type" name ="typeSelector{{i}}" [(ngModel)]="storeyData[i].floorTypes[0]">
+        <md-option *ngFor="let floorType of floorTypes" [value]="floorType.value">
+            {{floorType.viewValue}}
+        </md-option>
+     </md-select>
 
 	 <md-form-field style="width: 150px">
-	 <input mdInput type="number" placeholder="Floor area (m2)" name="floorArea" maxlength="5" min="0"  [(ngModel)] = "floorAreasInput[i]">
+	 <input mdInput type="number" placeholder="Floor area (m2)" name="floorArea{{i}}" maxlength="5" min="0"  [(ngModel)] = "storeyData[i].floorAreas[0]">
 	 </md-form-field>
 
 	 <!--  <button md-raised-button mdTooltip = "Does this storey have multiple floor types? Use this!" mdTooltipShowDelay = "500" color="primary">
 		     Add floor type
 	</button> -->
 
+	<md-select mdTooltip = "Select the type of floor insulation on this storey" mdTooltipShowDelay = "500" placeholder="Insulation" [(ngModel)]="storeyData[i].insulationTypes[0]" class = "typeSelector" name = "floorInsulationType{{i}}">
+		    <md-option *ngFor="let insulationType of insulationTypes;" [value]="insulationType.value">
+		      	{{insulationType.viewValue}}
+		    </md-option>
+	 </md-select>
+
+	 <md-form-field *ngIf = "storeyData[i].insulationTypes[0] == 'batts'" style="width: 150px">
+	 <input mdInput type="number" placeholder="Batt R-Value" name="battRValue{{i}}" maxlength="5" min="0" max = "8" step = "0.5" [(ngModel)] = "storeyData[i].battValue[0]">
+	 </md-form-field>
+
+
 	<button md-mini-fab mdTooltip = "Delete this floor" mdTooltipShowDelay = "500" color="warn" (click) = "deleteFloor(i)">
 		<md-icon>delete</md-icon>
 	</button> 
+
+	
 	</form>
 
 		
@@ -26,7 +38,7 @@
 	</button> 
 
 	<div class="done-button">
-		<button md-raised-button color="primary">
+		<button md-raised-button color="primary" (click) = "debugFunction(0)">
 	    	<md-icon>save</md-icon>
 	     Save
 		</button> 
