@@ -24,14 +24,9 @@ export class KelvinEnergyFloorDetailsFormComponent implements OnInit {
 	];
 
 
-	storeyNumber = [undefined];
-	floorTypesInput = []
-	floorAreasInput = [];
-	insulationTypesInput = [];
-	battValueInput = [];
 	testing = [true];
 
-	storeyData = [{floorTypes: [],floorAreas:[], insulationTypes:[], battValue: []}];
+	storeyFloorData = [{floorTypes: [],floorAreas:[], insulationTypes:[], battValue: []}];
 
 
 	trackByFn(index){
@@ -39,34 +34,22 @@ export class KelvinEnergyFloorDetailsFormComponent implements OnInit {
 	}
 
 	deleteFloor(index){
-
-		this.storeyData.splice(index,1);
-
+		this.storeyFloorData.splice(index,1);
 	}
 	incrementStoreyNumber(){
-		
-		this.storeyData.push({floorTypes: [],floorAreas:[], insulationTypes:[], battValue: []});
-
+		this.storeyFloorData.push({floorTypes: [],floorAreas:[], insulationTypes:[], battValue: []});
 	}
 
 	debugFunction(){
-
 		this.testing[1]= true;
-		console.log(this.storeyData)
-
+		console.log(this.storeyFloorData);
 	}
-
 
   constructor() { }
 
 
   ngOnInit() {
 	
-
   }
 
-
-
 }
-// why aren't we using an object to keep all of our data?
-// https://stackoverflow.com/questions/46658597/angular-ngfor-with-ngmodel-using-select-has-unexpected-binding
